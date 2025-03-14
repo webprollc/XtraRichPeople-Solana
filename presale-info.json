@@ -1,0 +1,27 @@
+{
+  "tokenMint": "Hwn86yyWX6M8JRxUF6p7i6kVJnc14V4TAJA1MvYjKZC4",
+  "presaleAddress": "A8dwV3QL2QZfreTnjZkUxkmNZN3PfMJzf5NKxRti93jz",
+  "startDate": "2025-04-01T00:00:00.000Z",
+  "endDate": "2025-04-15T23:59:59.000Z",
+  "tokenPrice": 0.005,
+  "minPurchase": 1000,
+  "maxPurchase": 1000000,
+  "hardCap": 5000000,
+  "tiers": [
+    {
+      "minInvestment": 10,
+      "bonus": 10,
+      "effectivePrice": 0.004545
+    },
+    {
+      "minInvestment": 50,
+      "bonus": 20,
+      "effectivePrice": 0.004167
+    },
+    {
+      "minInvestment": 100,
+      "bonus": 30,
+      "effectivePrice": 0.003846
+    }
+  ]
+}

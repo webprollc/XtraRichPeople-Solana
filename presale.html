@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XtraRichPeople (XRP) Token Presale - Solana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6f42c1;
+            --secondary-color: #fd7e14;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f7f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .presale-info {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .presale-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .presale-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .presale-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .presale-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .detail-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .detail-card p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .detail-card .small {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-container h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 15px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .countdown {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .countdown h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .countdown-item {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 80px;
+        }
+        
+        .countdown-item span {
+            display: block;
+        }
+        
+        .countdown-item .time {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .countdown-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        .tiers {
+            margin: 30px 0;
+        }
+        
+        .tiers h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .tier-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .tier-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tier-card h4 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tier-card .bonus {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .tier-card .min-investment {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .tier-card .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .tier-card.active {
+            border-color: var(--primary-color);
+        }
+        
+        .registration-form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .registration-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #5a32a3;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e96b02;
+        }
+        
+        .wallet-connect {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .success-message, .error-message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .token-info {
+            margin: 30px 0;
+        }
+        
+        .token-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .token-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .token-detail {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .token-detail h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .token-detail p {
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">XtraRichPeople (XRP)</div>
+            <div class="tagline">The Multi-Chain Token for the Future</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="presale-info">
+            <div class="presale-header">
+                <h2>XRP Token Presale</h2>
+                <p>Participate in our exclusive presale event on Solana</p>
+            </div>
+            
+            <div class="presale-details">
+                <div class="detail-card">
+                    <h3>Token Price</h3>
+                    <p>0.005 USDC</p>
+                    <div class="small">per XRP token</div>
+                </div>
+                <div class="detail-card">
+                    <h3>Min Purchase</h3>
+                    <p>1,000 XRP</p>
+                    <div class="small">tokens</div>
+                </div>
+                <div class="detail-card">
+                    <h3>Max Purchase</h3>
+                    <p>1,000,000 XRP</p>
+                    <div class="small">tokens</div>
+                </div>
+                <div class="detail-card">
+                    <h3>Hard Cap</h3>
+                    <p>5,000,000 XRP</p>
+                    <div class="small">tokens</div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <h3>Presale Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar"></div>
+                </div>
+                <div class="progress-info">
+                    <span id="tokens-sold">0 XRP</span>
+                    <span id="percentage-sold">0%</span>
+                    <span>5,000,000 XRP</span>
+                </div>
+            </div>
+            
+            <div class="countdown">
+                <h3 id="countdown-title">Presale Starts In</h3>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-item">
+                        <span class="time" id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="time" id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="time" id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="time" id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tiers">
+                <h3>Bonus Tiers</h3>
+                <div class="tier-cards">
+                    <div class="tier-card" id="tier-1">
+                        <h4>Tier 1</h4>
+                        <div class="bonus">10%</div>
+                        <div class="min-investment">Min: 10 USDC</div>
+                        <div class="price">0.004545 USDC per token</div>
+                    </div>
+                    <div class="tier-card" id="tier-2">
+                        <h4>Tier 2</h4>
+                        <div class="bonus">20%</div>
+                        <div class="min-investment">Min: 50 USDC</div>
+                        <div class="price">0.004167 USDC per token</div>
+                    </div>
+                    <div class="tier-card" id="tier-3">
+                        <h4>Tier 3</h4>
+                        <div class="bonus">30%</div>
+                        <div class="min-investment">Min: 100 USDC</div>
+                        <div class="price">0.003846 USDC per token</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="registration-form" id="registration-form">
+            <h2>Register for Presale</h2>
+            
+            <div class="success-message" id="success-message"></div>
+            <div class="error-message" id="error-message"></div>
+            
+            <div class="form-group">
+                <label for="wallet-address">Solana Wallet Address</label>
+                <input type="text" id="wallet-address" placeholder="Enter your Solana wallet address" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="token-amount">XRP Token Amount</label>
+                    <input type="number" id="token-amount" min="1000" max="1000000" placeholder="Minimum 1,000 XRP" required>
+                </div>
+                <div class="form-group">
+                    <label for="usdc-amount">USDC Amount (Calculated)</label>
+                    <input type="text" id="usdc-amount" readonly>
+                </div>
+            </div>
+            
+            <button type="button" id="register-btn" class="btn btn-block">Register for Presale</button>
+        </div>
+        
+        <div class="token-info">
+            <h3>Token Information</h3>
+            <div class="token-details">
+                <div class="token-detail">
+                    <h4>Token Name</h4>
+                    <p>XtraRichPeople</p>
+                </div>
+                <div class="token-detail">
+                    <h4>Symbol</h4>
+                    <p>XRP</p>
+                </div>
+                <div class="token-detail">
+                    <h4>Decimals</h4>
+                    <p>9</p>
+                </div>
+                <div class="token-detail">
+                    <h4>Total Supply</h4>
+                    <p>10,000,000,000 XRP</p>
+                </div>
+                <div class="token-detail">
+                    <h4>Token Address</h4>
+                    <p>Hwn86yyWX6M8JRxUF6p7i6kVJnc14V4TAJA1MvYjKZC4</p>
+                </div>
+                <div class="token-detail">
+                    <h4>Network</h4>
+                    <p>Solana Mainnet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 XtraRichPeople (XRP). All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://xtrarichpeople.com">Website</a>
+                <a href="https://twitter.com/XtraRichPeople">Twitter</a>
+                <a href="https://t.me/XtraRichPeople">Telegram</a>
+                <a href="https://discord.gg/XtraRichPeople">Discord</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Presale configuration
+            const presaleConfig = {
+                tokenMint: "Hwn86yyWX6M8JRxUF6p7i6kVJnc14V4TAJA1MvYjKZC4",
+                presaleAddress: "A8dwV3QL2QZfreTnjZkUxkmNZN3PfMJzf5NKxRti93jz",
+                startDate: "2025-04-01T00:00:00.000Z",
+                endDate: "2025-04-15T23:59:59.000Z",
+                tokenPrice: 0.005,
+                minPurchase: 1000,
+                maxPurchase: 1000000,
+                hardCap: 5000000,
+                tiers: [
+                    {
+                        minInvestment: 10,
+                        bonus: 10,
+                        effectivePrice: 0.004545
+                    },
+                    {
+                        minInvestment: 50,
+                        bonus: 20,
+                        effectivePrice: 0.004167
+                    },
+                    {
+                        minInvestment: 100,
+                        bonus: 30,
+                        effectivePrice: 0.003846
+                    }
+                ]
+            };
+            
+            // DOM elements
+            const progressBar = document.getElementById('progress-bar');
+            const tokensSold = document.getElementById('tokens-sold');
+            const percentageSold = document.getElementById('percentage-sold');
+            const countdownTitle = document.getElementById('countdown-title');
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            const tokenAmountInput = document.getElementById('token-amount');
+            const usdcAmountInput = document.getElementById('usdc-amount');
+            const walletAddressInput = document.getElementById('wallet-address');
+            const registerBtn = document.getElementById('register-btn');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const tier1 = document.getElementById('tier-1');
+            const tier2 = document.getElementById('tier-2');
+            const tier3 = document.getElementById('tier-3');
+            
+            // Initialize presale status
+            let presaleStatus = 'upcoming';
+            let totalSold = 0;
+            
+            // Fetch presale status
+            function fetchPresaleStatus() {
+                // In a real implementation, this would be an API call
+                // For this demo, we'll simulate the response
+                const now = new Date();
+                const startDate = new Date(presaleConfig.startDate);
+                const endDate = new Date(presaleConfig.endDate);
+                
+                if (now >= startDate && now <= endDate) {
+                    presaleStatus = 'active';
+                } else if (now > endDate) {
+                    presaleStatus = 'ended';
+                } else {
+                    presaleStatus = 'upcoming';
+                }
+                
+                // Simulate some sales
+                totalSold = Math.floor(Math.random() * 2000000);
+                
+                // Update UI
+                updatePresaleUI();
+            }
+            
+            // Update presale UI based on status
+            function updatePresaleUI() {
+                // Update progress bar
+                const percentage = (totalSold / presaleConfig.hardCap) * 100;
+                progressBar.style.width = `${percentage}%`;
+                tokensSold.textContent = `${totalSold.toLocaleString()} XRP`;
+                percentageSold.textContent = `${percentage.toFixed(2)}%`;
+                
+                // Update countdown title
+                if (presaleStatus === 'upcoming') {
+                    countdownTitle.textContent = 'Presale Starts In';
+                    updateCountdown(new Date(presaleConfig.startDate));
+                } else if (presaleStatus === 'active') {
+                    countdownTitle.textContent = 'Presale Ends In';
+                    updateCountdown(new Date(presaleConfig.endDate));
+                } else {
+                    countdownTitle.textContent = 'Presale Ended';
+                    document.getElementById('countdown').style.display = 'none';
+                }
+                
+                // Update registration form
+                if (presaleStatus === 'active') {
+                    document.getElementById('registration-form').style.display = 'block';
+                } else {
+                    document.getElementById('registration-form').style.display = 'none';
+                }
+            }
+            
+            // Update countdown timer
+            function updateCountdown(targetDate) {
+                const interval = setInterval(() => {
+                    const now = new Date();
+                    const difference = targetDate - now;
+                    
+                    if (difference <= 0) {
+                        clearInterval(interval);
+                        fetchPresaleStatus();
+                        return;
+                    }
+                    
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                    
+                    daysEl.textContent = days.toString().padStart(2, '0');
+                    hoursEl.textContent = hours.toString().padStart(2, '0');
+                    minutesEl.textContent = minutes.toString().padStart(2, '0');
+                    secondsEl.textContent = seconds.toString().padStart(2, '0');
+                }, 1000);
+            }
+            
+            // Calculate USDC amount based on token amount
+            tokenAmountInput.addEventListener('input', function() {
+                const tokenAmount = parseFloat(this.value) || 0;
+                let usdcAmount = tokenAmount * presaleConfig.tokenPrice;
+                
+                // Apply bonus based on USDC amount
+                if (usdcAmount >= presaleConfig.tiers[2].minInvestment) {
+                    usdcAmount = tokenAmount * presaleConfig.tiers[2].effectivePrice;
+                    highlightTier(tier3);
+                } else if (usdcAmount >= presaleConfig.tiers[1].minInvestment) {
+                    usdcAmount = tokenAmount * presaleConfig.tiers[1].effectivePrice;
+                    highlightTier(tier2);
+                } else if (usdcAmount >= presaleConfig.tiers[0].minInvestment) {
+                    usdcAmount = tokenAmount * presaleConfig.tiers[0].effectivePrice;
+                    highlightTier(tier1);
+                } else {
+                    resetTiers();
+                }
+                
+                usdcAmountInput.value = usdcAmount.toFixed(2);
+            });
+            
+            // Highlight active tier
+            function highlightTier(tier) {
+                resetTiers();
+                tier.classList.add('active');
+            }
+            
+            // Reset tier highlighting
+            function resetTiers() {
+                tier1.classList.remove('active');
+                tier2.classList.remove('active');
+                tier3.classList.remove('active');
+            }
+            
+            // Handle registration
+            registerBtn.addEventListener('click', function() {
+                const walletAddress = walletAddressInput.value.trim();
+                const tokenAmount = parseFloat(tokenAmountInput.value) || 0;
+                const usdcAmount = parseFloat(usdcAmountInput.value) || 0;
+                
+                // Validate inputs
+                if (!walletAddress) {
+                    showError('Please enter your Solana wallet address');
+                    return;
+                }
+                
+                if (tokenAmount < presaleConfig.minPurchase) {
+                    showError(`Minimum purchase is ${presaleConfig.minPurchase} XRP tokens`);
+                    return;
+                }
+                
+                if (tokenAmount > presaleConfig.maxPurchase) {
+                    showError(`Maximum purchase is ${presaleConfig.maxPurchase} XRP tokens`);
+                    return;
+                }
+                
+                // Send registration request
+                // In a real implementation, this would be an API call
+                // For this demo, we'll simulate the response
+                fetch('/wp-json/xrp-presale/v1/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        walletAddress,
+                        tokenAmount,
+                        usdcAmount
+                    })
+                })
+                .then(response => {
+                    // Simulate a successful response for the demo
+                    return {
+                        success: true,
+                        registrationId: 'REG' + Date.now(),
+                        presaleAddress: presaleConfig.presaleAddress,
+                        message: `Please send ${usdcAmount.toFixed(2)} USDC to the presale address`
+                    };
+                })
+                .then(data => {
+                    if (data.success) {
+                        showSuccess(`
+                            Registration successful! Your registration ID is ${data.registrationId}.<br><br>
+                            Please send <strong>${usdcAmount.toFixed(2)} USDC</strong> to the following address:<br>
+                            <strong>${data.presaleAddress}</strong><br><br>
+                            Your tokens will be distributed after the presale ends.
+                        `);
+                        
+                        // Reset form
+                        walletAddressInput.value = '';
+                        tokenAmountInput.value = '';
+                        usdcAmountInput.value = '';
+                        resetTiers();
+                    } else {
+                        showError(data.error || 'Registration failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showError('An error occurred. Please try again later.');
+                });
+            });
+            
+            // Show success message
+            function showSuccess(message) {
+                successMessage.innerHTML = message;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // Scroll to message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Show error message
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                
+                // Scroll to message
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Initialize
+            fetchPresaleStatus();
+        });
+    </script>
+</body>
+</html>
