@@ -1,0 +1,20 @@
+# Solana keypairs and wallets
+keypair.json
+*-keypair.json
+wallet.json
+*-wallet.json
+
+# Anchor build artifacts
+.anchor
+target/
+**/*.rs.bk
+
+# Solana program build artifacts
+dist/
+build/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
